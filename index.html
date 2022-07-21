@@ -68,13 +68,18 @@
   <script src="./富邦證券 好康活動任意門_files/jquery.min.js.下載"></script>
 </head>
 
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-fbblue">
     <div class="container">
-      <a href="https://www.fbs.com.tw/"><img src="./富邦證券 好康活動任意門_files/logo.png" width="150" height="38" border="0" /></a>
-      <button class="btn btn-sm mr-1 btn-info" style="float:right;color:white;" onclick="location.href='https://fcstock.fbs.com.tw/ru/e.aspx'">營業員開戶連結產生器</button>
-      <button id="line-login-check" class="btn btn-sm mr-1" style="float:right;background-color:#00c300;color:white;">Line 登入</button>
-      
+      <div class="row align-items-center">
+        <div class="col">
+          <a href="https://www.fbs.com.tw/"><img src="./富邦證券 好康活動任意門_files/logo.png" width="150" height="38" border="0"/></a>
+        </div>
+        <div class="col">
+            <a href="https://fcstock.fbs.com.tw/ru/e.aspx?openExternalBrowser=1" style="float:right;color:white;margin: 2px;" class="btn btn-sm mr-1 btn-info">營業員開戶連結產生器</a>
+              <button id="line-login-check" class="btn btn-sm mr-1" style="float:right;background-color:#00c300;color:white;margin: 2px;">Line 登入</button>
+      </div>
     </div>
   </nav>
 
@@ -142,17 +147,22 @@
         $.each(data, function(key,value){ 
           let button_list = ""
           $('#result').append('\
-              <div class="col-md-4 pb-1 pb-md-0 filterDiv '+ value.type + ' show">\
-                  <div class="card"><a href="'+ value.eventurl + '" title="超連結"><img class="card-img-top" src="'+ value.cardimg + '\" alt="找不到圖片" border="0"></a>\
+              <div class="col-md-4 d-flex align-items-stretch justify-content-center filterDiv '+ value.type + ' show " style="margin-top:10px; margin-bottom:10px;">\
+                <div class="card-deck">\
+                  <div class="card" style="width:350px;">\
+                    <a href="'+ value.eventurl + '" title="超連結"><img class="card-img-top" width="500px" height="200px" src="'+ value.cardimg + '\" alt="找不到圖片" border="0" ></a>\
                       <div class="card-body">\
                           <h5 class="card-title">' + value.cardtitle + '</h5>\
-                          <div><a class="btn btn-primary" data-toggle="modal" data-target="#form' + value.formid + '" style="color:white;">分享</a>\
-                              <a href="'+ value.eventurl + '" class="btn btn-primary" target="_blank">'+ value.rightbuttonname +'</a>\
-                              <h1 name="keyword" style="display:none">'+ value.keyword +'</h1>\
-                          </div>\
                       </div>\
-                  </div>\
-              </div>'); 
+                          <div class="card-footer">\
+                            <div>\
+                              <a class="btn btn-primary btn" data-toggle="modal" data-target="#form' + value.formid + '" style="color:white;">分享</a>\
+                              <a href="'+ value.eventurl + '" class="btn btn-primary btn"  target="_blank">'+ value.rightbuttonname +'</a>\
+                              <h1 name="keyword" style="display:none">'+ value.keyword + '</h1>\
+                           </div>\
+                    </div>\
+                </div>\
+              </div>');
           $("#moddd").append('\
               <div class="modal fade" id="form'+ value.formid + '" tabindex="-1" role="dialog" ara>\
                   <div class="modal-dialog modal-md" role="document">\
