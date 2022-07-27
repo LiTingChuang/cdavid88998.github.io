@@ -101,7 +101,7 @@
   <script>
     window.onload = function () {
         const useNodeJS = false; // if you are not using a node server, set this value to false
-        const defaultLiffId = "1656732953-Oe4W0ZQG"; // change the default LIFF value if you are not using a node server
+        const defaultLiffId = "1656693260-1NYWwV9E"; // change the default LIFF value if you are not using a node server
 
         // DO NOT CHANGE THIS
         let myLiffId = "";
@@ -186,8 +186,29 @@
                 // start to use LIFF's api
                 console.log("Liff ID沒問題");
                 let val = getUrlParam('formid');
-                console.log(formdict[val])
+                let p4 = getUrlParam('p4');
+                let clerk = getUrlParam('clerk');
+                let branchid = getUrlParam('branchid');
+                let cardtype = getUrlParam('cardtype');
+                console.log(formdict[val]);
+                console.log(p4);
+                console.log(clerk);
+                console.log(branchid);
+                console.log(cardtype);
                 let content = formdict[val];
+                if (cardtype == "open") {
+                  if (p4 != null && clerk != null && branchid != null){
+                    let openurl = "https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID=" + branchid +"#/main/home_H5"
+                    let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+#\/main\/home_H/g
+                    let checkurl = reg.test(openurl);
+                    console.log("check = " + checkurl);
+                  }
+                  if (checkurl == true){
+                    let k = JSON.parse(content)
+                    k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
+                    let content = JSON.stringify(k)
+                  }
+                }
                 if (val != null) {
                   if (!formdict[val]){
                     $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
@@ -207,7 +228,7 @@
                         })
                       }else{
                         liff.login({
-                          redirectUri: "https://liff.line.me/1656732953-Oe4W0ZQG?formid=" + val
+                          redirectUri: "https://liff.line.me/1656693260-1NYWwV9E?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid
                         });
                       }
                     }else{
