@@ -106,7 +106,7 @@
       <button class="btn btn-sm col-3" onclick="filterSelection('edm')"> 新手上路</button>
       <button class="btn btn-sm col-3" onclick="filterSelection('video')"> 教學影片</button>
     </div>
-    <div class="row text-center mt-4 justify-content-center" id="result"></div>
+    <div class="row text-center mt-4" id="result"></div>
 
     <!---->
     
@@ -147,12 +147,12 @@
         $.each(data, function(key,value){ 
           let button_list = ""
           $('#result').append('\
-          <div class="align-items-stretch">\
-              <div class="col-md-4 filterDiv '+ value.type + ' show " style="margin-top:10px; margin-bottom:10px;">\
-                <div class="card-deck"  style="width:360px;">\
+          <div class="col-4 d-flex justify-content-center align-items-stretch">\
+              <div class="filterDiv '+ value.type + ' show" style="margin-top:10px; margin-bottom:10px; width:100%;">\
+                <div class="card-deck" style="height:100%;">\
                   <div class="card">\
-                    <a href="'+ value.eventurl + '" title="超連結"><img class="card-img-top" width="500px" height="200px" src="'+ value.cardimg + '\" alt="找不到圖片" border="0" ></a>\
-                      <div class="card-body">\
+                    <a href="'+ value.eventurl + '" title="超連結"><img class="card-img-top" width="330px" height="200px" src="'+ value.cardimg + '\" alt="找不到圖片" border="0" ></a>\
+                    <div class="card-body">\
                           <h5 class="card-title">' + value.cardtitle + '</h5>\
                       </div>\
                           <div class="card-footer">\
@@ -161,9 +161,10 @@
                               <a href="'+ value.eventurl + '" class="btn btn-primary btn"  target="_blank">'+ value.rightbuttonname +'</a>\
                               <h1 name="keyword" style="display:none">'+ value.keyword + '</h1>\
                            </div>\
+                        </div>\
+                      </div>\
                     </div>\
                   </div>\
-                </div>\
               </div>');
           $("#moddd").append('\
               <div class="modal fade" id="form'+ value.formid + '" tabindex="-1" role="dialog" ara>\
