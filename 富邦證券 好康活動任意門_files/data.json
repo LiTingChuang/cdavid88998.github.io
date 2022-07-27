@@ -68,7 +68,7 @@
     {
         "formid": "1005",
         "type": "event",
-        "cardimg": "./富邦證券 好康活動任意門_files/揪友.png",
+        "cardimg": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20220526054032bba4.png?39",
         "cardtitle": "新舊朋友看過來 揪友活動",
         "eventurl": "https://www.fbs.com.tw/ShareLink#getlink?utm_source=sec168&utm_medium=event_all&utm_campaign=ShareLink_event",
         "modaltitle": "📢新舊朋友看過來 揪友活動",
@@ -82,7 +82,7 @@
     {
         "formid": "1006",
         "type": "event",
-        "cardimg": "./富邦證券 好康活動任意門_files/著急另.png",
+        "cardimg": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20220526054032bba4.png?39",
         "cardtitle": "證好友召集令 友禮大放送",
         "eventurl": "https://www.fubon.com/securities/line/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=line_event",
         "modaltitle": "📢證好友召集令 友禮大放送",
@@ -99,7 +99,7 @@
     {
         "formid": "2001",
         "type": "edm",
-        "cardimg": "./富邦證券 好康活動任意門_files/e點通操作教學.png",
+        "cardimg": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20220526054032bba4.png?39",
         "cardtitle": "【新戶_T+2】<br>e點通操作教學",
         "eventurl": "https://www.youtube.com/watch?v=Sey0rTgvE6k",
         "modaltitle": "【新戶_T+2】e點通操作教學",
@@ -111,7 +111,7 @@
     {
         "formid": "2002",
         "type": "edm",
-        "cardimg": "./富邦證券 好康活動任意門_files/正好有.png",
+        "cardimg": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20220526054032bba4.png?39",
         "cardtitle": "【新戶_T+6】<br>LINE官方帳號邀請",
         "eventurl": "https://linebcs.fubon.com/fubonapi/l/31403",
         "modaltitle": "【新戶_T+6】LINE官方帳號邀請",
@@ -137,7 +137,7 @@
     {
         "formid": "2004",
         "type": "edm",
-        "cardimg": "./富邦證券 好康活動任意門_files/選對.png",
+        "cardimg": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20220526054032bba4.png?39",
         "cardtitle": "【新戶_T+14】<br>定期定額教學",
         "eventurl": "https://www.fubon.com/securities/hot_new/open-now/etf.html?utm_source=sec168&utm_medium=event_all&utm_campaign=etf_event",
         "modaltitle": "【新戶_T+14】定期定額教學",
@@ -167,7 +167,7 @@
     {
         "formid": "2006",
         "type": "edm",
-        "cardimg": "./富邦證券 好康活動任意門_files/鈴鼓.png",
+        "cardimg": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20220526054032bba4.png?39",
         "cardtitle": "【新戶_T+25】<br>零股教學",
         "eventurl": "https://www.fbs.com.tw/e.htm",
         "modaltitle": "【新戶_T+25】零股教學",
