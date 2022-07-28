@@ -66,6 +66,7 @@
   <link href="./富邦證券 好康活動任意門_files/bootstrap-4.0.0.css" rel="stylesheet" />
   <link rel="shortcut icon" href="https://www.fubon.com/securities/hot_new/images/logo_s.png" />
   <script src="./富邦證券 好康活動任意門_files/jquery.min.js.下載"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.js"></script>
 </head>
 
 <body>
@@ -81,9 +82,25 @@
 
   <div style="height: 30px">&nbsp;</div>
   <h2 id="gift" class="text-center">內部抽籤傳送</h2>
-  <div style="height: 15px">&nbsp;</div>
   <div class="container">
-    <div class="row text-center mt-4"></div>
+    <div class="modal hide modal-dialog modal-lg" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">僅限數金部內部人員使用</h5>
+          </div>
+          <div class="modal-body">
+            請輸入密碼：
+            <input type="number" id="password1">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="checkpassword">確認密碼</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
     <div class="row text-center mt-4 justify-content-center" id="result"></div>
 
     <!---->
@@ -106,7 +123,7 @@
       </div>
     </div>
   </div>
-
+  
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="./富邦證券 好康活動任意門_files/jquery-3.2.1.min.js.下載"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -344,8 +361,10 @@
         }
       )
     }
+   
     
   </script>
+  
   <div class="betternet-wrapper"></div>
   <div id="liffAppContent">
     <!-- LIFF INIT ERROR -->
@@ -360,6 +379,25 @@
     </div>
     <script>
     </script>
+    <script type="text/javascript">
+      $(window).on('load',function(){
+          $('#myModal').modal('show');
+          $('#myModal').modal({backdrop: 'static', keyboard: false});
+          
+      });
+      $("#checkpassword").click(function() {
+          let num = $('#password1').val();
+          console.log(num);
+          let hash = md5(num);
+          console.log(hash)
+          if (hash == "b64f1a77b1b317d347f5cb79332c86d2") {
+            $('#myModal').modal('hide');
+          }else{
+            alert('密碼錯誤!');
+            $('#password1').val("");
+          }
+      });
+  </script>
 </body>
 
 </html>
