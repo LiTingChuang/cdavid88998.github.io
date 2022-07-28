@@ -23,7 +23,6 @@
       display: block;
     }
     .bottom-sticky {
-      width: 50%;
       position: fixed;
       bottom: 0;
       left: 0;
@@ -35,6 +34,7 @@
       font-weight: bold;
       box-shadow: 10px 6px 8px 8px rgb(51 51 51 / 18%);
       z-index: 99999999999;
+      text-align: center;
     }
 
     .bottom-sticky span {
@@ -42,20 +42,14 @@
       font-size: 1.25rem;
     }
 
-    .bottom-sticky h2 {
+    .bottom-sticky h3 {
       color: #fff;
       padding-top: 10px;
       margin: 0;
       line-height: 1.25;
       align-items: center;
-    }
-
-    .bottom-sticky-ev1 {
+      justify-content: center;
       display: inline-block;
-      text-align: center;
-      border-right: 2px solid;
-      width: 100%;
-      height: 50px;
     }
 
     .bottom-sticky-ev1:hover {
@@ -112,11 +106,9 @@
     
   </div>
 
-  <div style="height: 20px">&nbsp;</div>
-  <div class="navbar text-white bg-gray p-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 fot col-lg-12 ta-center">
+  <div class="navbar text-white bg-gray justify-content-center" style="margin-top: 20px;">
+    <div class="container" style="margin-left:0; margin-right: 0; margin-bottom: 20px;">
+        <div class="fot  ta-center">
           <address>
             <strong>富邦綜合證券股份有限公司</strong>
             110年金管證總字第0015號<br />
@@ -127,12 +119,11 @@
         </div>
       </div>
     </div>
-  </div>
   <div id="moddd"></div>
   <div class="bottom-sticky">
-    <div class="bottom-sticky-ev1">
-      <a href="https://fcstock.fbs.com.tw/ru/e.aspx"><h2>營業員開戶連結產生器</h2></a>
-    </div>
+    <!-- <div class="bottom-sticky-ev1"> -->
+      <a href="https://fcstock.fbs.com.tw/ru/e.aspx"><h3>營業員開戶連結產生器</h3></a>
+    <!-- </div> -->
   </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -147,11 +138,11 @@
         $.each(data, function(key,value){ 
           let button_list = ""
           $('#result').append('\
-          <div class="col-md-4 d-flex justify-content-center align-items-stretch">\
+          <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-stretch">\
               <div class="filterDiv '+ value.type + ' show" style="margin-top:10px; margin-bottom:10px; width:100%;">\
                 <div class="card-deck" style="height:100%;">\
                   <div class="card">\
-                    <a href="'+ value.eventurl + '" title="超連結"><img class="card-img-top" width="330px" height="200px" src="'+ value.cardimg + '\" alt="找不到圖片" border="0" ></a>\
+                    <a href="'+ value.eventurl + '" title="超連結"><img class="card-img-top"  style="width:100%; height:200px; object-fit: cover;" src="'+ value.cardimg + '\" alt="找不到圖片" border="0" ></a>\
                     <div class="card-body">\
                           <h5 class="card-title">' + value.cardtitle + '</h5>\
                       </div>\
