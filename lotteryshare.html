@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://www.fubon.com/securities/hot_new/event-all.html -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>富邦證券 168資訊發布站</title>
+  <style>
+    .hidden {
+        display: none;
+    }
+</style>
+  <!-- Bootstrap -->
+  <link href="./富邦證券 好康活動任意門_files/bootstrap-4.0.0.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="https://www.fubon.com/securities/hot_new/images/logo_s.png" />
+  <script src="./富邦證券 好康活動任意門_files/jquery.min.js.下載"></script>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-fbblue">
+    <div class="container">
+      <a href="https://www.fbs.com.tw/"><img src="./富邦證券 好康活動任意門_files/logo.png" width="150" height="38" border="0" /></a>
+    </div>
+  </nav> -->
+<!-- 
+  <div style="height: 30px">&nbsp;</div>
+  <h2 id="gift" class="text-center">♥️數位要人幫，數金我來幫♥️</h2>
+  <div style="height: 15px">&nbsp;</div> -->
+  <div class="container">
+    <h5 id="title">分享結束後，即可關閉此網頁。</h5>
+    <!-- <div class="row text-center mt-4"></div> -->
+    <!-- <div class="row text-center mt-4" id="result"></div> -->
+
+    <!---->
+  </div>
+
+  <!-- <div style="height: 20px">&nbsp;</div>
+  <div class="navbar text-white bg-gray p-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 fot col-lg-12 ta-center">
+          <address>
+            <strong>富邦綜合證券股份有限公司</strong>
+            110年金管證總字第0015號<br />
+            總公司地址：台北市大安區仁愛路四段169號3,4樓<br />客服專線：02-8178-3018、
+            0800-073-588<br />客服信箱：service.sec@fubon.com
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="moddd"></div> -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="./富邦證券 好康活動任意門_files/jquery-3.2.1.min.js.下載"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="./富邦證券 好康活動任意門_files/popper.min.js.下載"></script>
+  <script src="./富邦證券 好康活動任意門_files/bootstrap-4.0.0.js.下載"></script>
+
+  <!-- <script>
+  var one;
+  $(function () {
+      $.getJSON("./富邦證券 好康活動任意門_files/test.json", function (data) {
+          one = data;
+      });
+    });
+  </script> -->
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script>
+    //重写alert
+    window.alert = function (name) {
+        var iframe = document.createElement("IFRAME");
+        iframe.style.display = "none";
+        iframe.setAttribute("src", 'data:text/plain,');
+        document.documentElement.appendChild(iframe);
+        window.frames[0].window.alert(name);
+        iframe.parentNode.removeChild(iframe);
+    }
+    //重写confirm 不显示ip地址  
+    var wConfirm = window.confirm;
+    window.confirm = function (message) {
+        try {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display = "none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            var alertFrame = window.frames[0];
+            var iwindow = alertFrame.window;
+            if (iwindow == undefined) {
+                iwindow = alertFrame.contentWindow;
+            }
+            var result = iwindow.confirm(message);
+            iframe.parentNode.removeChild(iframe);
+            return result;
+        } catch (exc) {
+            return wConfirm(message);
+        }
+    }
+  </script>
+  <script>
+    window.onload = function () {
+        const useNodeJS = false; // if you are not using a node server, set this value to false
+        const defaultLiffId = "1656693260-KyPYO8jL"; // change the default LIFF value if you are not using a node server
+
+        // DO NOT CHANGE THIS
+        let myLiffId = "";
+
+        // if node is used, fetch the environment variable and pass it to the LIFF method
+        // otherwise, pass defaultLiffId
+        if (useNodeJS) {
+            fetch('/send-id')
+                .then(function (reqResponse) {
+                    return reqResponse.json();
+                })
+                .then(function (jsonResponse) {
+                    myLiffId = jsonResponse.id;
+                    initializeLiffOrDie(myLiffId);
+                })
+                .catch(function (error) {
+                    document.getElementById("liffAppContent").classList.add('hidden');
+                    document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
+                });
+        } else {
+            myLiffId = defaultLiffId;
+            initializeLiffOrDie(myLiffId);
+        }
+    };
+
+    /**
+     * Check if myLiffId is null. If null do not initiate liff.
+     * @param {string} myLiffId The LIFF ID of the selected element
+     */
+    function initializeLiffOrDie(myLiffId) {
+        if (!myLiffId) {
+            document.getElementById("liffAppContent").classList.add('hidden');
+            document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+        } else {
+            initializeLiff(myLiffId);
+        }
+    }
+
+    /**
+     * Initialize LIFF
+     * @param {string} myLiffId The LIFF ID of the selected element
+     */
+     function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+    let formdict = {}
+      $.getJSON('./富邦證券 好康活動任意門_files/lotterydata.json',function(data){ 
+        $.each(data, function(key,value){ 
+            formdict[value.lotteryid] = '{"type":"bubble","size":"giga","direction":"ltr","header":{"type":"box","layout":"vertical","backgroundColor":"#01A8F0","contents":[{"type":"text","text":"【抽籤快訊】","weight":"bold","size":"lg","color":"#FFFFFF","contents":[],"align":"center"}]},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"image","url":"https://www.fubon.com/securities/hot_new/bank-mopen/images/logo_s.png","flex":1,"align":"start","action":{"type":"uri","label":"action","uri":"https://www.fubon.com/securities/home/index.htm"},"aspectMode":"fit","aspectRatio":"3:2","size":"xxs"},{"type":"text","text":"'+ value.lottery_name +'(' + value.lottery_number + ')","weight":"bold","color":"#01A8F0","contents":[],"size":"xl","flex":2 }],"flex":3 },{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"box","layout":"vertical","width":"110px","height":"110px","backgroundColor":"#E0F1F8","cornerRadius":"100px","contents":[{"type":"text","text":"申購截止日","weight":"bold","color":"#0089D1","align":"center","gravity":"bottom","offsetTop":"25%","contents":[]},{"type":"text","text":"'+ value.end_date +'","weight":"bold","offsetTop":"28%","contents":[],"align":"center"},{"type":"text","text":"14:00前","offsetTop":"30%","weight":"bold","align":"center","color":"#B5B5B5","offsetStart":"3.5%"}],"flex":3 },{"type":"box","layout":"vertical","offsetStart":"5%","contents":[{"type":"box","layout":"vertical","margin":"sm","contents":[{"type":"text","text":"申購價","contents":[]},{"type":"text","text":"'+ value.purchase_price +'元","contents":[]}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"股數","contents":[]},{"type":"text","text":"'+ value.number_stock +'","contents":[]}],"margin":"md"}],"offsetTop":"10px","flex":2 },{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.last_day +' 收盤價","contents":[]},{"type":"text","text":"'+ value.last_price +'元","contents":[]}]},{"type":"box","layout":"vertical","margin":"md","contents":[{"type":"text","text":"每張價差","contents":[]},{"type":"text","text":"'+ value.price_dif_number +'('+ value.price_dif_percent +'%)","weight":"bold","color":"#FF4141","contents":[],"offsetEnd":"none"}]}],"margin":"xs","offsetTop":"14px","flex":3 }],"flex":10 },{"type":"separator","margin":"md"},{"type":"box","layout":"horizontal","spacing":"md","margin":"md","offsetStart":"3%","contents":[{"type":"text","text":"起始","contents":[]},{"type":"text","text":"截止","contents":[]},{"type":"text","text":"扣款","contents":[]},{"type":"text","text":"抽籤","contents":[]},{"type":"text","text":"退款","contents":[]},{"type":"text","text":"撥券","contents":[]}],"flex":6 },{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"horizontal","width":"15px","height":"15px","borderWidth":"2px","borderColor":"#EF454D","cornerRadius":"100px","contents":[],"backgroundColor":"#FFFFFF","offsetEnd":"2%"},{"type":"filler"},{"type":"box","layout":"horizontal","width":"15px","height":"15px","borderWidth":"2px","borderColor":"#0089D1","cornerRadius":"100px","contents":[],"backgroundColor":"#FFFFFF","offsetEnd":"2%"},{"type":"filler"},{"type":"box","layout":"horizontal","width":"15px","height":"15px","borderWidth":"2px","borderColor":"#0089D1","cornerRadius":"100px","contents":[],"backgroundColor":"#FFFFFF"},{"type":"filler"},{"type":"box","layout":"horizontal","width":"15px","height":"15px","borderWidth":"2px","borderColor":"#0089D1","cornerRadius":"100px","contents":[],"backgroundColor":"#FFFFFF"},{"type":"filler"},{"type":"box","layout":"horizontal","width":"15px","height":"15px","borderWidth":"2px","borderColor":"#0089D1","cornerRadius":"100px","contents":[],"backgroundColor":"#FFFFFF"},{"type":"filler"},{"type":"box","layout":"horizontal","width":"15px","height":"15px","borderWidth":"2px","borderColor":"#0089D1","cornerRadius":"100px","contents":[],"backgroundColor":"#FFFFFF"}],"backgroundColor":"#DDDDDD","margin":"md","offsetStart":"6%","cornerRadius":"20px","flex":11,"width":"90%","paddingStart":"2%","spacing":"xxl"},{"type":"box","layout":"horizontal","spacing":"md","margin":"md","offsetStart":"3%","contents":[{"type":"text","text":"'+ value.start_date +'","contents":[],"size":"sm"},{"type":"text","text":"'+ value.end_date +'","contents":[],"size":"sm"},{"type":"text","text":"'+ value.charge_date +'","contents":[],"size":"sm"},{"type":"text","text":"'+ value.draw_date +'","contents":[],"size":"sm"},{"type":"text","text":"'+ value.refund_date +'","contents":[],"size":"sm"},{"type":"text","text":"'+ value.give_date +'","contents":[],"size":"sm"}],"flex":6 }]},"footer":{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","action":{"type":"uri","label":"馬上抽籤去","uri":"https://www.fbs.com.tw/e11.htm"},"style":"link","color":"#01A8F0"}],"flex":3,"borderColor":"#01A8F0","cornerRadius":"6px","borderWidth":"medium"},{"type":"box","layout":"horizontal","contents":[{"type":"button","action":{"type":"uri","label":"分享給朋友","uri":"https://liff.line.me/1656693260-KyPYO8jL/lotteryshare.html?lotteyform='+ value.lotteryid +'"},"style":"link","color":"#01A8F0"}],"flex":3,"borderColor":"#01A8F0","borderWidth":"medium","cornerRadius":"6px"}],"spacing":"md"}}';
+      })
+    })
+
+
+    function initializeLiff(myLiffId) {
+        liff
+            .init({
+                liffId: myLiffId
+            })
+            .then(() => {
+                // start to use LIFF's api
+                console.log("Liff ID沒問題");
+                let val = getUrlParam('lotteryform');
+                console.log(formdict[val])
+                let content = formdict[val];
+                if (val != null) {
+                  if (!formdict[val]){
+                    $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
+                    //liff.closeWindow();
+                  }else{
+                    if (!liff.isInClient()) { //不是用內部瀏覽器開
+                      if (liff.isLoggedIn()) { //登入狀態
+                        let k = JSON.parse(content);
+                        liff.shareTargetPicker([{
+                          type:'flex',
+                          altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+                          contents: k
+                        }
+                        ])
+                        .then(() => {
+                          liff.closeWindow();
+                        })
+                      }else{
+                        liff.login({
+                          redirectUri: "https://liff.line.me/1656693260-KyPYO8jL?lotteryform=" + val
+                        });
+                      }
+                    }else{
+                      let k = JSON.parse(content);
+                      liff.shareTargetPicker([{
+                        type:'flex',
+                        altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+                        contents: k
+                      }
+                      ])
+                      .then(() => {
+                        liff.closeWindow();
+                      })
+                    }
+                  }
+                }else{
+                  $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
+                  //liff.closeWindow();
+                }
+                })
+
+            .catch((err) => {
+                document.getElementById("liffAppContent").classList.add('hidden');
+                document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            });
+    }
+
+    /**
+     * Initialize the app by calling functions handling individual app components
+     */
+    //function initializeApp() {
+        //registerButtonHandlers();
+      //  registerButtonHandlerss();
+        // check if the user is logged in/out, and disable inappropriate button
+    //}
+
+    /**
+     * Display data generated by invoking LIFF methods
+    /**
+     * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
+     */
+
+    /**
+     * Register event handlers for the buttons displayed in the app
+     */
+
+    
+  </script>
+
+  <div class="betternet-wrapper"></div>
+  <div id="liffAppContent">
+    <!-- LIFF INIT ERROR -->
+    <div id="liffInitErrorMessage" class="hidden">
+        <p>Something went wrong with LIFF initialization.</p>
+        <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error
+            occurs in the process of <code>liff.init()</code>.
+    </div>
+    <!-- NODE.JS LIFF ID ERROR -->
+    <div id="nodeLiffIdErrorMessage" class="hidden">
+        <p>Unable to receive the LIFF ID as an environment variable.</p>
+    </div>
+</body>
+
+</html>
