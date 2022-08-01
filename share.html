@@ -151,7 +151,7 @@
         return null; //返回参数值
     }
     let formdict = {}
-      $.getJSON('https://fbsline.github.io/data.json',function(data){ 
+    $.getJSON('./富邦證券 好康活動任意門_files/data.json',function(data){ 
         $.each(data, function(key,value){ 
           let button_list = ""
           $.each(value.button, function(key,value){  
@@ -202,13 +202,28 @@
                     let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+#\/main\/home_H/g
                     let checkurl = reg.test(openurl);
                     console.log("check = " + checkurl);
+                    
+                    let k = JSON.parse(content);
+                    
+                    
+                    k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl
+
+                    console.log(JSON.stringify(k));
+                    // let content = JSON.stringify(k);
+                    
+                    
                   }
-                  if (checkurl == true){
-                    let k = JSON.parse(content)
-                    k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
-                    let content = JSON.stringify(k)
-                  }
+                  // if (checkurl == true){
+                  //   let k = JSON.parse(content)
+                  //   k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
+                  //   let content = JSON.stringify(k)
+                  //   console.log(JSON.parse(content))
+
+                  // }
+                }else{
+                  let k = JSON.parse(content);
                 }
+                
                 if (val != null) {
                   if (!formdict[val]){
                     $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
@@ -216,7 +231,7 @@
                   }else{
                     if (!liff.isInClient()) { //不是用內部瀏覽器開
                       if (liff.isLoggedIn()) { //登入狀態
-                        let k = JSON.parse(content);
+                        // let k = JSON.parse(content);
                         liff.shareTargetPicker([{
                           type:'flex',
                           altText:'📢哈囉，您有一則來自富邦證券的訊息!',
@@ -232,7 +247,7 @@
                         });
                       }
                     }else{
-                      let k = JSON.parse(content);
+                      // let k = JSON.parse(content);
                       liff.shareTargetPicker([{
                         type:'flex',
                         altText:'📢哈囉，您有一則來自富邦證券的訊息!',
@@ -254,6 +269,7 @@
                 document.getElementById("liffAppContent").classList.add('hidden');
                 document.getElementById("liffInitErrorMessage").classList.remove('hidden');
             });
+            console.log(JSON.stringify(k));
     }
 
     /**
