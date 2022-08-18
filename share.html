@@ -151,7 +151,7 @@
         return null; //返回参数值
     }
     var formdict = {}
-    $.getJSON('./富邦證券 好康活動任意門_files/data.json',function(data){ 
+    $.getJSON('https://fbsline.github.io/data.json',function(data){ 
         $.each(data, function(key,value){ 
           let button_list = ""
           $.each(value.button, function(key,value){  
