@@ -203,7 +203,7 @@
                     let checkurl = reg.test(openurl);
                     console.log("check = " + checkurl);
                     
-                    let k = JSON.parse(content);
+                    var k = JSON.parse(content);
                     
                     
                     k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl
