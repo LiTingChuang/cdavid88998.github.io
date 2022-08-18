@@ -150,7 +150,7 @@
         if (r != null) return unescape(r[2]);
         return null; //返回参数值
     }
-    let formdict = {}
+    var formdict = {}
     $.getJSON('./富邦證券 好康活動任意門_files/data.json',function(data){ 
         $.each(data, function(key,value){ 
           let button_list = ""
@@ -245,7 +245,7 @@
                         })
                       }else{
                         liff.login({
-                          redirectUri: "https://cdavid88998.github.io/share.html?formid=" + val
+                          redirectUri: "https://liff.line.me/1656693260-1NYWwV9E?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid
                         });
                       }
                     }else{
