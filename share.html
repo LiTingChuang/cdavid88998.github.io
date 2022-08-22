@@ -196,7 +196,7 @@
                 console.log(branchid);
                 console.log(cardtype);
                 let content = formdict[val];
-                if (cardtype == "open") {
+                if (cardtype == "open" && formdict[val]) {
                   if (p4 != null && clerk != null && branchid != null){
                     let openurl = "https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID=" + branchid +"#/main/home_H5"
                     let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+#\/main\/home_H/g
@@ -224,7 +224,12 @@
 
                   // }
                 }else{
-                  var k = JSON.parse(content);
+                  if (!formdict[val]){
+                    $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
+                    //liff.closeWindow();
+                  }else{
+                    var k = JSON.parse(content);
+                  }
                 }
                 
                 if (val != null) {
