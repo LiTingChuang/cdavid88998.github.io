@@ -205,8 +205,8 @@
                     
                     var k = JSON.parse(content);
                     
-                    
-                    k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl
+                    k['footer']['contents'][1]['contents'][0]['action']['label'] = '🚀 指定專員開戶GO ✨';
+                    k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
                     k['footer']['contents'][0]['contents'][0]['action']['uri'] = "https://liff.line.me/1656693260-1NYWwV9E?formid=" + val + "&cardtype=open&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid;
 
                     console.log(JSON.stringify(k));
