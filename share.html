@@ -198,8 +198,8 @@
                 let content = formdict[val];
                 if (cardtype == "open" && formdict[val]) {
                   if (p4 != null && clerk != null && branchid != null){
-                    let openurl = "https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID=" + branchid +"#/main/home_H5"
-                    let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+#\/main\/home_H/g
+                    let openurl = "https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID=" + branchid +"&openExternalBrowser=1#/main/home_H5"
+                    let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+&openExternalBrowser=1#\/main\/home_H/g
                     let checkurl = reg.test(openurl);
                     console.log("check = " + checkurl);
                     
