@@ -52,6 +52,24 @@
         "refund_date":"09/07",
         "give_date":"09/13",
         "total_lottery":"1,760"
+    },
+    {
+        "lotteryid":"TW1006", 
+        "lottery_name":"碩禾",
+        "lottery_number":"3691",
+        "purchase_price":"115",
+        "last_day":"09/01",
+        "last_price":"139.5",
+        "number_stock": "1000",
+        "price_dif_number": "24,500",
+        "price_dif_percent": "21.3",
+        "start_date":"09/02",
+        "end_date":"09/06",
+        "charge_date":"09/07",
+        "draw_date":"09/08",
+        "refund_date":"09/12",
+        "give_date":"09/19",
+        "total_lottery":"1,360"
     }
 
 
