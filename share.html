@@ -151,7 +151,7 @@
         return null; //返回参数值
     }
     var formdict = {}
-    $.getJSON('https://fbsline.github.io/data.json',function(data){ 
+      $.getJSON('https://fbsline.github.io/data.json',function(data){ 
         $.each(data, function(key,value){ 
           let button_list = ""
           $.each(value.button, function(key,value){  
@@ -166,12 +166,12 @@
             if(!value.flex){
               value.flex = 1
             }
-            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"cover","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.eventurl +'"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656732953-Oe4W0ZQG?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
+            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"cover","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.eventurl +'"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
           } else{
             if(!value.flex){
               value.flex = 1
             }
-            formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.linetext + '","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656732953-Oe4W0ZQG?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
+            formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.linetext + '","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
           }
       })
     })
@@ -186,11 +186,12 @@
                 // start to use LIFF's api
                 console.log("Liff ID沒問題");
                 var val = getUrlParam('formid');
+                // console.log(formdict[val])
                 var p4 = getUrlParam('P4');
                 var clerk = getUrlParam('CLERK');
                 var branchid = getUrlParam('BRANCHID');
                 var cardtype = getUrlParam('cardtype');
-                console.log(formdict[val]);
+                // console.log(formdict[val]);
                 console.log(p4);
                 console.log(clerk);
                 console.log(branchid);
@@ -208,7 +209,10 @@
                     k['footer']['contents'][1]['contents'][0]['action']['label'] = '🚀 指定專員開戶GO ✨';
                     k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
                     k['footer']['contents'][0]['contents'][0]['action']['uri'] = "https://liff.line.me/1656693260-1NYWwV9E?formid=" + val + "&cardtype=open&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid;
-
+                    k['hero']['action']['uri'] = "https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID="+ branchid　+　"&openExternalBrowser=1#/main/home_H5";
+                    k['body']['contents'][0]['contents'][0]['action']['uri'] = "https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID="+ branchid　+　"&openExternalBrowser=1#/main/home_H5";
+                    k['footer']['contents'][0]['contents'][1]['action']['uri'] = "https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID="+ branchid　+　"&openExternalBrowser=1#/main/home_H5";
+                    
                     console.log(JSON.stringify(k));
                     // let content = JSON.stringify(k);
                     
@@ -277,7 +281,6 @@
                 document.getElementById("liffAppContent").classList.add('hidden');
                 document.getElementById("liffInitErrorMessage").classList.remove('hidden');
             });
-            // console.log(JSON.stringify(k));
     }
 
     /**
