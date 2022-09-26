@@ -83,6 +83,7 @@
   <div style="height: 30px">&nbsp;</div>
   <h2 id="gift" class="text-center">內部抽籤傳送</h2>
   <div class="container">
+    <button class="btn btn-warning align-items-center" id="sendall">一鍵傳送</button>
     <div class="modal hide modal-dialog modal-lg" id="myModal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -360,6 +361,22 @@
                 alert('訊息已傳送!');
                 //liff.closeWindow();
             })
+        }
+      ),
+      $("button[id='sendall']").click(function(){
+          $.each(formdict,function(index,value){ 
+            $.each(value, function(index2, value2) {
+                    let k = JSON.parse(value2);
+                    console.log(k)
+                    liff.sendMessages([
+                    {
+                      type:'flex',
+                      altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+                      contents: k
+                    }
+                  ])
+              })
+          })
         }
       )
     }
