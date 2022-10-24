@@ -166,7 +166,10 @@
             if(!value.flex){
               value.flex = 1
             }
-            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"cover","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.eventurl +'"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
+            if(!value.mode){
+              value.mode = 'cover'
+            }
+            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"'+ value.mode +'","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.secsrc +'"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
           } else{
             if(!value.flex){
               value.flex = 1
