@@ -219,17 +219,17 @@
                 console.log(clerk);
                 console.log(branchid);
                 console.log(cardtype);
-                
+                let content = formdict[val];
                 if (cardtype == "open" && formdict[val]) {
                   if (p4 != null & clerk != null & branchid != null & val=='1007' & p4 != "null" & clerk != "null" & branchid != "null"){
                     formdict['1007'] = '{"type":"bubble","hero":{"type":"image","url":"https://www.fbs.com.tw/wcm/new_web/hot/hot/mOpen20220801_650x404.png","size":"full","aspectRatio":"288:179","aspectMode":"cover","action":{"type":"uri","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","wrap":true,"action":{"type":"uri","label":"action","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"},"contents":[{"type":"span","text":"","weight":"bold"},{"type":"span","text":"📢7x24線上服務 輕鬆一指開戶\\n💰新戶台股電子下單手續費優惠\\n\\n📆 2022/8/1～2022/12/31\\n\\n✨新戶手續費優惠\\n完成開戶當月起至年底享台股電子下單每月成交金額100萬元以下手續費優惠\\n"}]}]},{"type":"box","layout":"vertical","contents":[{"type":"separator","margin":"sm"},{"type":"text","contents":[{"type":"span","text":"分公司代碼："},{"type":"span","text":"9688"}],"margin":"sm","size":"xs","color":"#A9A9A9"},{"type":"text","contents":[{"type":"span","text":"營業員代碼："},{"type":"span","text":"168"}],"size":"xs","color":"#A9A9A9"}]}],"action":{"type":"uri","label":"action","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid=1007"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"前往活動網頁","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"},"color":"#f47721","flex":1 }],"spacing":"md"},{"type":"box","layout":"vertical","contents":[{"type":"button","action":{"type":"uri","label":"🚀 指定專員開戶GO ✨","uri":"https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event#/main/selectNewFubonBankType_H5"},"style":"primary","color":"#f47721","height":"sm"}],"spacing":"sm"}],"flex":0 }}'
-                    let content = formdict[val];
+                    let content1 = formdict[val];
                     let openurl = "https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID=" + branchid +"&openExternalBrowser=1#/main/home_H5"
                     let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+&openExternalBrowser=1#\/main\/home_H/g
                     let checkurl = reg.test(openurl);
                     console.log("check = " + checkurl);
                     
-                    var k = JSON.parse(content);
+                    var k = JSON.parse(content1);
                     
                     k['footer']['contents'][1]['contents'][0]['action']['label'] = '🚀 指定專員開戶GO ✨';
                     k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
@@ -254,7 +254,6 @@
 
                   // }
                 }else{
-                  let content = formdict[val];
                   if (!formdict[val]){
                     $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
                     //liff.closeWindow();
