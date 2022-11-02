@@ -12,7 +12,6 @@
 
     gtag('config', 'UA-148598770-1');
   </script>
-
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,7 +81,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-fbblue">
     <div class="container">
       <a href="https://www.fbs.com.tw/"><img src="./富邦證券 好康活動任意門_files/logo.png" width="150" height="38" border="0" /></a>
-      <button class="btn btn-sm mr-1 btn-info" style="float:right;color:white;" onclick="location.href='https://fcstock.fbs.com.tw/ru/e.aspx'">營業員開戶連結產生器</button>
+      <a href="https://fcstock.fbs.com.tw/ru/e.aspx?openExternalBrowser=1" class="btn btn-sm btn-info" style="float:right;color:white;" target="_blank">營業員開戶連結產生器</a>
       <button id="line-login-check" class="btn btn-sm mr-1" style="float:right;background-color:#00c300;color:white;">Line 登入</button>
       
     </div>
@@ -136,7 +135,7 @@
   <div id="moddd"></div>
   <div class="bottom-sticky">
     <div class="bottom-sticky-ev1">
-      <a href="https://fcstock.fbs.com.tw/ru/e.aspx"><h2>營業員開戶連結產生器</h2></a>
+      <a href="https://fcstock.fbs.com.tw/ru/e.aspx?openExternalBrowser=1" target="_blank"><h2>營業員開戶連結產生器</h2></a>
     </div>
   </div>
 
@@ -158,7 +157,7 @@
                       <div class="card-body">\
                           <h5 class="card-title">' + value.cardtitle + '</h5>\
                           <div id="id'+ value.formid +'">\
-                            <a href="https://61.222.4.16/ru/e.aspx?openExternalBrowser=1" class="btn btn-info" target="_blank">營業員開戶連結產生器</a>\
+                            <a href="https://fcstock.fbs.com.tw/ru/e.aspx?openExternalBrowser=1" class="btn btn-info" target="_blank">營業員開戶連結產生器</a>\
                           </div>\
                       </div>\
                   </div>\
@@ -209,16 +208,25 @@
               console.log(button_list)
             }) 
           let button_list1 = button_list.slice(1);
-          if (value.type == "edm"){
+          if (value.msgtype == "edm"){
             if(!value.flex){
               value.flex = 1
             }
-            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"'+ value.mode +'","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.secsrc +'"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
-          } else{
+            if(!value.mode){
+              value.mode = 'cover'
+            }
+            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"'+ value.mode +'","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.secsrc + '"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
+            } else if(value.msgtype == "free"){
+              formdict[value.formid] = JSON.stringify(value.linetext)
+
+            }else{
             if(!value.flex){
               value.flex = 1
             }
-            formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"288:179","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.linetext + '","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
+            if(!value.title){
+              value.title = " ";
+            }
+            formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"},"contents":[{"type":"span","text":"'+ value.title + '","weight":"bold"},{"type":"span","text":"'+ value.linetext + '"}]}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
           }
           // formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.linetext + '","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-MJKrDP7a?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"前往活動網頁","uri":"'+ value.eventurl + '"},"color":"#f47721"}],"flex":0 }}'; 
           })
@@ -377,20 +385,41 @@
      */
     function registerButtonHandlerss() {
       $("button[name='test1']").click(function(){
-              var button = $(this).val();
-              var content = formdict[button];
-              console.log(content);
-              let k = JSON.parse(content);
-              liff.shareTargetPicker([{
-                type:'flex',
-                altText:'📢哈囉，您有一則來自富邦證券的訊息!',
-                contents: k
+            if (liff.isLoggedIn()) { //登入狀態
+                // let k = JSON.parse(content);
+                var button = $(this).val();
+                var content = formdict[button];
+                console.log(content);
+                let k = JSON.parse(content);
+                console.log(k)
+                liff.shareTargetPicker([{
+                  type:'flex',
+                  altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+                  contents: k
+                }
+                ])
+                .then(() => {
+                  $('#form' + button).modal('hide');
+                })
+              }else{
+                liff.login({
+                  redirectUri: "https://www.fubon.com/securities/168secnews/index.html"
+                });
               }
-            ])
-            .then(() => {
-                $('#form' + button).modal('hide');
-                //liff.closeWindow();
-            })
+              // var button = $(this).val();
+              // var content = formdict[button];
+              // console.log(content);
+              // let k = JSON.parse(content);
+              // liff.shareTargetPicker([{
+              //   type:'flex',
+              //   altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+              //   contents: k
+              // }
+            // ])
+            // .then(() => {
+            //     $('#form' + button).modal('hide');
+            //     //liff.closeWindow();
+            // })
         }
       )
     }
@@ -471,6 +500,7 @@
       $("#clear").on("click", function(event) {
         $('.searchbox-input').val('').trigger('propertychange').focus();
       });
+ 
      
     });
     

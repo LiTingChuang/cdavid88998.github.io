@@ -12,7 +12,6 @@
 
     gtag('config', 'UA-148598770-1');
   </script>
-
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -161,31 +160,42 @@
         return null; //返回参数值
     }
     var formdict = {}
-      $.getJSON('https://fbsline.github.io/data.json',function(data){ 
-        $.each(data, function(key,value){ 
-          let button_list = ""
-          $.each(value.button, function(key,value){  
-              console.log(value.label);
-              let one = ""
-              one = '{"type":"button","action":{"type":"uri","label":"'+ value.label +'","uri":"'+ value.uri +'"},"style":"primary","color":"#f47721","height":"sm"}'
-              button_list = button_list + "," + one
-              console.log(button_list)
-          }) 
-          let button_list1 = button_list.slice(1);
-          if (value.type == "edm"){
-            if(!value.flex){
-              value.flex = 1
-            }
-            if(!value.mode){
-              value.mode = 'cover'
-            }
-            formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"'+ value.mode +'","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.secsrc +'"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
-          } else{
-            if(!value.flex){
-              value.flex = 1
-            }
-            formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.linetext + '","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
+    $.getJSON('https://fbsline.github.io/data.json',function(data){ 
+      $.each(data, function(key,value){ 
+        let button_list = ""
+        $.each(value.button, function(key,value){  
+            console.log(value.label);
+            let one = ""
+            one = '{"type":"button","action":{"type":"uri","label":"'+ value.label +'","uri":"'+ value.uri +'"},"style":"primary","color":"#f47721","height":"sm"}'
+            button_list = button_list + "," + one
+            console.log(button_list)
+        }) 
+        let button_list1 = button_list.slice(1);
+        if (value.type == "msgtype"){
+          if(!value.flex){
+            value.flex = 1
           }
+          
+          if(!value.mode){
+            value.mode = 'cover'
+          }
+          formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"'+ value.mode +'","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.secsrc + '"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
+          }else if(value.msgtype == "free"){
+              formdict[value.formid] = JSON.stringify(value.linetext)
+          }else{
+          if(!value.flex){
+            value.flex = 1
+          }
+          if(!value.title){
+            value.title = " ";
+          }
+          formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"},"contents":[{"type":"span","text":"'+ value.title + '","weight":"bold"},{"type":"span","text":"'+ value.linetext + '"}]}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
+        }
+      })
+    })
+    $.getJSON('https://fbsline.github.io/lotterydata.json',function(data){ 
+      $.each(data, function(key,value){ 
+        formdict[value.lotteryid] = '{"type":"bubble","size":"giga","header":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"image","url":"https://www.fubon-ebroker.com/Content/images/logo.png","align":"start","size":"md","offsetBottom":"xxl"}],"offsetBottom":"xxl"}],"backgroundColor":"#ffe8a6","height":"50px"},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"抽籤快訊","size":"3xl","color":"#663300","weight":"bold","align":"center","offsetTop":"md"}],"paddingBottom":"3px","backgroundColor":"#ffe8a6","offsetBottom":"lg"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.lottery_name +'","align":"center","size":"3xl","weight":"bold","wrap":true }],"borderWidth":"1px","borderColor":"#b38367"},{"type":"text","text":"'+ value.lottery_number +'","size":"3xl","align":"center","weight":"bold"},{"type":"text","text":"<'+ value.type +'>","align":"center","size":"lg","weight":"bold","color":"#A9A9A9"}],"margin":"5px"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"每張\\n價差","size":"lg","color":"#FFFFFF","weight":"bold","wrap":true }],"offsetStart":"3px","flex":0 },{"type":"text","gravity":"center","size":"xxl","color":"#FFFFFF","weight":"bold","offsetStart":"5px","text":"'+ value.price_dif_number +'","align":"center"}],"paddingAll":"1px"},{"type":"text","text":"元","color":"#FFFFFF","align":"end","offsetBottom":"9px"}],"backgroundColor":"#663300","height":"63px"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"溢價差約","size":"md","gravity":"center","color":"#663300","weight":"bold","align":"start","offsetStart":"1%"},{"type":"text","text":"'+ value.price_dif_percent +'%","size":"lg","color":"#663300","weight":"bold","align":"end"}]}]}],"borderWidth":"1px","borderColor":"#b38367"}],"paddingStart":"3px","paddingEnd":"3px"}],"margin":"10px"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"申購\\n開始","wrap":true,"weight":"bold"}]},{"type":"box","layout":"vertical","contents":[],"margin":"lg"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"截止\\n日期","wrap":true,"weight":"bold"}]}],"alignItems":"center","flex":0,"margin":"lg","justifyContent":"space-evenly"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.start_date +'","color":"#c00000","weight":"bold","size":"xl","align":"center"}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"I","color":"#c00000","weight":"bold","size":"xl","align":"center"}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.end_date +'","color":"#c00000","weight":"bold","size":"xl","align":"center"}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"下午2點前","color":"#c00000","weight":"bold","size":"sm","align":"center"}]}],"flex":2,"margin":"sm","offsetTop":"sm","justifyContent":"center"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"承銷價","size":"md","weight":"bold"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.last_day +'\\n收盤價","size":"md","weight":"bold","wrap":true }]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"申購股數","size":"md","weight":"bold"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"總申購張數","weight":"bold","size":"md"}]},{"type":"separator","color":"#663300","margin":"xs"}],"spacing":"xs","margin":"md","flex":2,"paddingTop":"sm"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.purchase_price +' 元","size":"md","weight":"bold","align":"end"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"\\n'+ value.last_price +' 元","size":"md","weight":"bold","align":"end","wrap":true }]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.number_stock +' 股","size":"md","weight":"bold","align":"end"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.total_lottery +' 張","weight":"bold","size":"md","align":"end"}]},{"type":"separator","color":"#663300","margin":"xs"}],"spacing":"xs","margin":"none","flex":0,"paddingTop":"sm"}],"paddingAll":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"扣款","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px","offsetEnd":"md"},{"type":"filler"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"抽籤","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px"},{"type":"filler"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"還款","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px"},{"type":"filler"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"撥券","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px"}],"offsetStart":"10%","backgroundColor":"#ffe8a6","cornerRadius":"80px","margin":"md","spacing":"xxl","width":"90%","paddingStart":"2%"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"'+ value.charge_date +'","size":"md","color":"#663300","weight":"bold","flex":2,"align":"center"},{"type":"filler","flex":0 },{"type":"text","text":"'+ value.draw_date +'","size":"md","color":"#663300","weight":"bold","flex":2,"align":"center"},{"type":"filler","flex":0 },{"type":"text","text":"'+ value.refund_date +'","size":"md","color":"#663300","weight":"bold","align":"center","flex":2 },{"type":"filler","flex":0 },{"type":"text","text":"'+ value.give_date +'","size":"md","color":"#663300","weight":"bold","align":"center","flex":2 }],"margin":"sm","spacing":"none","flex":15,"offsetStart":"sm"}],"margin":"xs"}],"borderColor":"#b38367","cornerRadius":"lg","borderWidth":"5px","backgroundColor":"#FFFFFF","offsetBottom":"lg"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","action":{"type":"uri","label":"馬上抽籤去","uri":"https://www.fbs.com.tw/e11.htm"},"color":"#CCB985","style":"primary"}],"borderWidth":"semi-bold","cornerRadius":"lg","borderColor":"#b38367"},{"type":"box","layout":"horizontal","contents":[{"type":"button","action":{"type":"uri","label":"分享抽籤訊息","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.lotteryid +'"},"color":"#CCB985","style":"primary"}],"borderWidth":"semi-bold","cornerRadius":"lg","borderColor":"#b38367"}],"spacing":"md"}],"paddingTop":"0px","backgroundColor":"#ffe8a6"},"styles":{"footer":{"backgroundColor":"#ffe8a6"}}}'
       })
     })
 
