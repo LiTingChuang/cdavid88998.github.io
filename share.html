@@ -214,11 +214,13 @@
                 var clerk = getUrlParam('CLERK');
                 var branchid = getUrlParam('BRANCHID');
                 var cardtype = getUrlParam('cardtype');
+                var from = getUrlParam('from');
                 // console.log(formdict[val]);
                 console.log(p4);
                 console.log(clerk);
                 console.log(branchid);
                 console.log(cardtype);
+                console.log(from);
                 let content = formdict[val];
                 if (cardtype == "open" && formdict[val]) {
                   if (p4 != null & clerk != null & branchid != null & val=='1007' & p4 != "null" & clerk != "null" & branchid != "null"){
@@ -241,8 +243,6 @@
                     k['body']['contents'][1]['contents'][2]['contents'][1]['text'] = clerk;
                     console.log(JSON.stringify(k));
                     // let content = JSON.stringify(k);
-                    
-                    
                   }else{
                     var k = JSON.parse(content);
                     console.log(k)
@@ -278,12 +278,22 @@
                         }
                         ])
                         .then(() => {
-                          liff.closeWindow();
+                          if (from == "index"){
+                            location.href = "https://liff.line.me/1656693260-jrn3WaOP"
+                          }else{
+                            liff.closeWindow();
+                          }
                         })
                       }else{
-                        liff.login({
-                          redirectUri: "https://cdavid88998.github.io/share.html?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid
-                        });
+                        if (from == "index"){
+                          liff.login({
+                            redirectUri: "https://cdavid88998.github.io/share.html?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid + "&from=index" 
+                          });
+                        }else{
+                          liff.login({
+                            redirectUri: "https://cdavid88998.github.io/share.html?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid
+                          });
+                        }
                       }
                     }else{
                       // let k = JSON.parse(content);
@@ -294,7 +304,11 @@
                       }
                       ])
                       .then(() => {
-                        liff.closeWindow();
+                        if (from == "index"){
+                            location.href = "https://liff.line.me/1656693260-jrn3WaOP"
+                        }else{
+                          liff.closeWindow();
+                        }
                       })
                     }
                   }
