@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://www.fubon.com/securities/hot_new/event-all.html -->
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148598770-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148598770-1');
+  </script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>富邦證券 168資訊發布站</title>
+  <style>
+    .hidden {
+        display: none;
+    }
+</style>
+  <!-- Bootstrap -->
+  <link href="./富邦證券 好康活動任意門_files/bootstrap-4.0.0.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="https://www.fubon.com/securities/hot_new/images/logo_s.png" />
+  <script src="./富邦證券 好康活動任意門_files/jquery.min.js.下載"></script>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-fbblue">
+    <div class="container">
+      <a href="https://www.fbs.com.tw/"><img src="./富邦證券 好康活動任意門_files/logo.png" width="150" height="38" border="0" /></a>
+    </div>
+  </nav> -->
+<!-- 
+  <div style="height: 30px">&nbsp;</div>
+  <h2 id="gift" class="text-center">♥️數位要人幫，數金我來幫♥️</h2>
+  <div style="height: 15px">&nbsp;</div> -->
+  <div class="container">
+    <h5 id="title">分享結束後，即可關閉此網頁。</h5>
+    <!-- <div class="row text-center mt-4"></div> -->
+    <!-- <div class="row text-center mt-4" id="result"></div> -->
+
+    <!---->
+  </div>
+
+  <!-- <div style="height: 20px">&nbsp;</div>
+  <div class="navbar text-white bg-gray p-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 fot col-lg-12 ta-center">
+          <address>
+            <strong>富邦綜合證券股份有限公司</strong>
+            110年金管證總字第0015號<br />
+            總公司地址：台北市大安區仁愛路四段169號3,4樓<br />客服專線：02-8178-3018、
+            0800-073-588<br />客服信箱：service.sec@fubon.com
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="moddd"></div> -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="./富邦證券 好康活動任意門_files/jquery-3.2.1.min.js.下載"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="./富邦證券 好康活動任意門_files/popper.min.js.下載"></script>
+  <script src="./富邦證券 好康活動任意門_files/bootstrap-4.0.0.js.下載"></script>
+
+  <!-- <script>
+  var one;
+  $(function () {
+      $.getJSON("./富邦證券 好康活動任意門_files/test.json", function (data) {
+          one = data;
+      });
+    });
+  </script> -->
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script>
+    //重写alert
+    window.alert = function (name) {
+        var iframe = document.createElement("IFRAME");
+        iframe.style.display = "none";
+        iframe.setAttribute("src", 'data:text/plain,');
+        document.documentElement.appendChild(iframe);
+        window.frames[0].window.alert(name);
+        iframe.parentNode.removeChild(iframe);
+    }
+    //重写confirm 不显示ip地址  
+    var wConfirm = window.confirm;
+    window.confirm = function (message) {
+        try {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display = "none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            var alertFrame = window.frames[0];
+            var iwindow = alertFrame.window;
+            if (iwindow == undefined) {
+                iwindow = alertFrame.contentWindow;
+            }
+            var result = iwindow.confirm(message);
+            iframe.parentNode.removeChild(iframe);
+            return result;
+        } catch (exc) {
+            return wConfirm(message);
+        }
+    }
+  </script>
+  <script>
+    window.onload = function () {
+        const useNodeJS = false; // if you are not using a node server, set this value to false
+        const defaultLiffId = "1656693260-k5QpxdWM"; // change the default LIFF value if you are not using a node server
+
+        // DO NOT CHANGE THIS
+        let myLiffId = "";
+
+        // if node is used, fetch the environment variable and pass it to the LIFF method
+        // otherwise, pass defaultLiffId
+        if (useNodeJS) {
+            fetch('/send-id')
+                .then(function (reqResponse) {
+                    return reqResponse.json();
+                })
+                .then(function (jsonResponse) {
+                    myLiffId = jsonResponse.id;
+                    initializeLiffOrDie(myLiffId);
+                })
+                .catch(function (error) {
+                    document.getElementById("liffAppContent").classList.add('hidden');
+                    document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
+                });
+        } else {
+            myLiffId = defaultLiffId;
+            initializeLiffOrDie(myLiffId);
+        }
+    };
+
+    /**
+     * Check if myLiffId is null. If null do not initiate liff.
+     * @param {string} myLiffId The LIFF ID of the selected element
+     */
+    function initializeLiffOrDie(myLiffId) {
+        if (!myLiffId) {
+            document.getElementById("liffAppContent").classList.add('hidden');
+            document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+        } else {
+            initializeLiff(myLiffId);
+        }
+    }
+
+    /**
+     * Initialize LIFF
+     * @param {string} myLiffId The LIFF ID of the selected element
+     */
+     function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+    var formdict = {}
+    $.getJSON('./富邦證券 好康活動任意門_files/data.json',function(data){ 
+      $.each(data, function(key,value){ 
+        let button_list = ""
+        $.each(value.button, function(key,value){  
+            console.log(value.label);
+            let one = ""
+            one = '{"type":"button","action":{"type":"uri","label":"'+ value.label +'","uri":"'+ value.uri +'"},"style":"primary","color":"#f47721","height":"sm"}'
+            button_list = button_list + "," + one
+            console.log(button_list)
+        }) 
+        let button_list1 = button_list.slice(1);
+        if (value.msgtype == "edm"){
+          if(!value.flex){
+            value.flex = 1
+          }
+          
+          if(!value.mode){
+            value.mode = 'cover'
+          }
+          formdict[value.formid] = '{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"image","url":"'+ value.imgsrc +'","size":"full","aspectRatio":"'+ value.ratio +'","aspectMode":"'+ value.mode +'","gravity":"top","action": {"type": "uri","label": "action","uri": "'+ value.secsrc + '"}}],"paddingAll":"0px"},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}'
+          }else if(value.msgtype == "free"){
+              formdict[value.formid] = JSON.stringify(value.linetext)
+          }else{
+          if(!value.flex){
+            value.flex = 1
+          }
+          if(!value.title){
+            value.title = " ";
+          }
+          formdict[value.formid] = '{"type":"bubble","hero":{"type":"image","url":"' + value.cardimg + '","size":"full","aspectRatio":"7:4","aspectMode":"cover","action":{"type":"uri","uri":"' + value.eventurl + '"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","wrap":true,"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"},"contents":[{"type":"span","text":"'+ value.title + '","weight":"bold"},{"type":"span","text":"'+ value.linetext + '"}]}]}],"action":{"type":"uri","label":"action","uri":"'+ value.secsrc + '"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.formid + '"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"'+ value.linebuttonname +'","uri":"'+ value.eventurl + '"},"color":"#f47721","flex": '+ value.flex +'}],"spacing":"md"},{"type":"box","layout":"vertical","contents":['+ button_list1 +'],"spacing":"sm"}],"flex":0 }}';
+        }
+      })
+    })
+    $.getJSON('https://fbsline.github.io/lotterydata.json',function(data){ 
+      $.each(data, function(key,value){ 
+        formdict[value.lotteryid] = '{"type":"bubble","size":"giga","header":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"image","url":"https://www.fubon-ebroker.com/Content/images/logo.png","align":"start","size":"md","offsetBottom":"xxl"}],"offsetBottom":"xxl"}],"backgroundColor":"#ffe8a6","height":"50px"},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"抽籤快訊","size":"3xl","color":"#663300","weight":"bold","align":"center","offsetTop":"md"}],"paddingBottom":"3px","backgroundColor":"#ffe8a6","offsetBottom":"lg"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.lottery_name +'","align":"center","size":"3xl","weight":"bold","wrap":true }],"borderWidth":"1px","borderColor":"#b38367"},{"type":"text","text":"'+ value.lottery_number +'","size":"3xl","align":"center","weight":"bold"},{"type":"text","text":"<'+ value.type +'>","align":"center","size":"lg","weight":"bold","color":"#A9A9A9"}],"margin":"5px"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"每張\\n價差","size":"lg","color":"#FFFFFF","weight":"bold","wrap":true }],"offsetStart":"3px","flex":0 },{"type":"text","gravity":"center","size":"xxl","color":"#FFFFFF","weight":"bold","offsetStart":"5px","text":"'+ value.price_dif_number +'","align":"center"}],"paddingAll":"1px"},{"type":"text","text":"元","color":"#FFFFFF","align":"end","offsetBottom":"9px"}],"backgroundColor":"#663300","height":"63px"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"溢價差約","size":"md","gravity":"center","color":"#663300","weight":"bold","align":"start","offsetStart":"1%"},{"type":"text","text":"'+ value.price_dif_percent +'%","size":"lg","color":"#663300","weight":"bold","align":"end"}]}]}],"borderWidth":"1px","borderColor":"#b38367"}],"paddingStart":"3px","paddingEnd":"3px"}],"margin":"10px"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"申購\\n開始","wrap":true,"weight":"bold"}]},{"type":"box","layout":"vertical","contents":[],"margin":"lg"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"截止\\n日期","wrap":true,"weight":"bold"}]}],"alignItems":"center","flex":0,"margin":"lg","justifyContent":"space-evenly"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.start_date +'","color":"#c00000","weight":"bold","size":"xl","align":"center"}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"I","color":"#c00000","weight":"bold","size":"xl","align":"center"}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.end_date +'","color":"#c00000","weight":"bold","size":"xl","align":"center"}]},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"下午2點前","color":"#c00000","weight":"bold","size":"sm","align":"center"}]}],"flex":2,"margin":"sm","offsetTop":"sm","justifyContent":"center"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"承銷價","size":"md","weight":"bold"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.last_day +'\\n收盤價","size":"md","weight":"bold","wrap":true }]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"申購股數","size":"md","weight":"bold"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"總申購張數","weight":"bold","size":"md"}]},{"type":"separator","color":"#663300","margin":"xs"}],"spacing":"xs","margin":"md","flex":2,"paddingTop":"sm"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.purchase_price +' 元","size":"md","weight":"bold","align":"end"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"\\n'+ value.last_price +' 元","size":"md","weight":"bold","align":"end","wrap":true }]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.number_stock +' 股","size":"md","weight":"bold","align":"end"}]},{"type":"separator","color":"#663300","margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"'+ value.total_lottery +' 張","weight":"bold","size":"md","align":"end"}]},{"type":"separator","color":"#663300","margin":"xs"}],"spacing":"xs","margin":"none","flex":0,"paddingTop":"sm"}],"paddingAll":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"扣款","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px","offsetEnd":"md"},{"type":"filler"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"抽籤","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px"},{"type":"filler"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"還款","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px"},{"type":"filler"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"撥券","align":"center","weight":"bold","margin":"lg","size":"lg","color":"#663300"}],"backgroundColor":"#fdc20c","borderWidth":"2px","cornerRadius":"100px","width":"50px","height":"50px"}],"offsetStart":"10%","backgroundColor":"#ffe8a6","cornerRadius":"80px","margin":"md","spacing":"xxl","width":"90%","paddingStart":"2%"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"'+ value.charge_date +'","size":"md","color":"#663300","weight":"bold","flex":2,"align":"center"},{"type":"filler","flex":0 },{"type":"text","text":"'+ value.draw_date +'","size":"md","color":"#663300","weight":"bold","flex":2,"align":"center"},{"type":"filler","flex":0 },{"type":"text","text":"'+ value.refund_date +'","size":"md","color":"#663300","weight":"bold","align":"center","flex":2 },{"type":"filler","flex":0 },{"type":"text","text":"'+ value.give_date +'","size":"md","color":"#663300","weight":"bold","align":"center","flex":2 }],"margin":"sm","spacing":"none","flex":15,"offsetStart":"sm"}],"margin":"xs"}],"borderColor":"#b38367","cornerRadius":"lg","borderWidth":"5px","backgroundColor":"#FFFFFF","offsetBottom":"lg"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","action":{"type":"uri","label":"馬上抽籤去","uri":"https://www.fbs.com.tw/e11.htm"},"color":"#CCB985","style":"primary"}],"borderWidth":"semi-bold","cornerRadius":"lg","borderColor":"#b38367"},{"type":"box","layout":"horizontal","contents":[{"type":"button","action":{"type":"uri","label":"分享抽籤訊息","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid='+ value.lotteryid +'"},"color":"#CCB985","style":"primary"}],"borderWidth":"semi-bold","cornerRadius":"lg","borderColor":"#b38367"}],"spacing":"md"}],"paddingTop":"0px","backgroundColor":"#ffe8a6"},"styles":{"footer":{"backgroundColor":"#ffe8a6"}}}'
+      })
+    })
+
+
+    function initializeLiff(myLiffId) {
+        liff
+            .init({
+                liffId: myLiffId
+            })
+            .then(() => {
+                // start to use LIFF's api
+                console.log("Liff ID沒問題");
+                var val = getUrlParam('formid');
+                // console.log(formdict[val])
+                var p4 = getUrlParam('P4');
+                var clerk = getUrlParam('CLERK');
+                var branchid = getUrlParam('BRANCHID');
+                var cardtype = getUrlParam('cardtype');
+                var from = getUrlParam('from');
+                // console.log(formdict[val]);
+                console.log(p4);
+                console.log(clerk);
+                console.log(branchid);
+                console.log(cardtype);
+                console.log(from);
+                let content = formdict[val];
+                if (cardtype == "open" && formdict[val]) {
+                  if (p4 != null & clerk != null & branchid != null & val=='1007' & p4 != "null" & clerk != "null" & branchid != "null"){
+                    formdict['1007'] = '{"type":"bubble","hero":{"type":"image","url":"https://www.fbs.com.tw/wcm/new_web/hot/hot/mOpen20220801_650x404.png","size":"full","aspectRatio":"288:179","aspectMode":"cover","action":{"type":"uri","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","wrap":true,"action":{"type":"uri","label":"action","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"},"contents":[{"type":"span","text":" ","weight":"bold"},{"type":"span","text":"📢7x24線上服務 輕鬆一指開戶\\n💰新戶台股電子下單手續費優惠\\n\\n📆 2022/8/1～2022/12/31\\n\\n✨新戶手續費優惠\\n完成開戶當月起至年底享台股電子下單每月成交金額100萬元以下手續費優惠\\n"}]}]},{"type":"box","layout":"vertical","contents":[{"type":"separator","margin":"sm"},{"type":"text","contents":[{"type":"span","text":"分公司代碼："},{"type":"span","text":"9688"}],"margin":"sm","size":"xs","color":"#A9A9A9"},{"type":"text","contents":[{"type":"span","text":"營業員代碼："},{"type":"span","text":"168"}],"size":"xs","color":"#A9A9A9"}]}],"action":{"type":"uri","label":"action","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"}},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"分享","uri":"https://liff.line.me/1656693260-1NYWwV9E?formid=1007"},"color":"#f47721"},{"type":"button","style":"primary","height":"sm","action":{"type":"uri","label":"前往活動網頁","uri":"https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event"},"color":"#f47721","flex":1 }],"spacing":"md"},{"type":"box","layout":"vertical","contents":[{"type":"button","action":{"type":"uri","label":"🚀 指定專員開戶GO ✨","uri":"https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event#/main/selectNewFubonBankType_H5"},"style":"primary","color":"#f47721","height":"sm"}],"spacing":"sm"}],"flex":0 }}'
+                    let content1 = formdict[val];
+                    let openurl = "https://mopen.fbs.com.tw/eOpen/indexH5.html?utm_source=sec168&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID=" + branchid +"&openExternalBrowser=1#/main/home_H5"
+                    let reg = /https:\/\/mopen.fbs.com.tw\/eOpen\/indexH5.html\?utm_source=sec168&P4=[A-Za-z0-9_]+&SOURCE=FBS&CLERK=[0-9]+&BRANCHID=[0-9]+&openExternalBrowser=1#\/main\/home_H/g
+                    let checkurl = reg.test(openurl);
+                    console.log("check = " + checkurl);
+                    
+                    var k = JSON.parse(content1);
+                    
+                    k['footer']['contents'][1]['contents'][0]['action']['label'] = '🚀 指定專員開戶GO ✨';
+                    k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
+                    k['footer']['contents'][0]['contents'][0]['action']['uri'] = "https://liff.line.me/1656693260-1NYWwV9E?formid=" + val + "&cardtype=open&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid;
+                    k['hero']['action']['uri'] = "https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID="+ branchid　+　"&openExternalBrowser=1#/main/home_H5";
+                    k['body']['contents'][0]['contents'][0]['action']['uri'] = "https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID="+ branchid　+　"&openExternalBrowser=1#/main/home_H5";
+                    k['footer']['contents'][0]['contents'][1]['action']['uri'] = "https://www.fubon.com/securities/open-now/index.html?utm_source=sec168&utm_medium=event_all&utm_campaign=mopen_event&P4=" + p4 + "&SOURCE=FBS&CLERK=" + clerk + "&BRANCHID="+ branchid　+　"&openExternalBrowser=1#/main/home_H5";
+                    k['body']['contents'][1]['contents'][1]['contents'][1]['text'] = branchid;
+                    k['body']['contents'][1]['contents'][2]['contents'][1]['text'] = clerk;
+                    console.log(JSON.stringify(k));
+                    // let content = JSON.stringify(k);
+                  }else{
+                    var k = JSON.parse(content);
+                    console.log(k)
+                  }
+                  // if (checkurl == true){
+                  //   let k = JSON.parse(content)
+                  //   k['footer']['contents'][1]['contents'][0]['action']['uri'] = openurl;
+                  //   let content = JSON.stringify(k)
+                  //   console.log(JSON.parse(content))
+
+                  // }
+                }else{
+                  if (!formdict[val]){
+                    $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
+                    //liff.closeWindow();
+                  }else{
+                    var k = JSON.parse(content);
+                  }
+                }
+                
+                if (val != null) {
+                  if (!formdict[val]){
+                    $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
+                    //liff.closeWindow();
+                  }else{
+                    if (!liff.isInClient()) { //不是用內部瀏覽器開
+                      if (liff.isLoggedIn()) { //登入狀態
+                        // let k = JSON.parse(content);
+                        liff.sendMessages([{
+                          type:'flex',
+                          altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+                          contents: k
+                        }
+                        ])
+                        .then(() => {
+                          if (from == "index"){
+                            location.href = "https://liff.line.me/1656693260-jrn3WaOP"
+                          }else{
+                            liff.closeWindow();
+                          }
+                        })
+                      }else{
+                        if (from == "index"){
+                          liff.login({
+                            redirectUri: "https://cdavid88998.github.io/share.html?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid + "&from=index" 
+                          });
+                        }else{
+                          liff.login({
+                            redirectUri: "https://cdavid88998.github.io/share.html?formid=" + val + "&cardtype=" + cardtype + "&CLERK=" + clerk + "&P4=" + p4 + "&BRANCHID=" + branchid
+                          });
+                        }
+                      }
+                    }else{
+                      // let k = JSON.parse(content);
+                      liff.sendMessages([{
+                        type:'flex',
+                        altText:'📢哈囉，您有一則來自富邦證券的訊息!',
+                        contents: k
+                      }
+                      ])
+                      .then(() => {
+                        if (from == "index"){
+                            location.href = "https://liff.line.me/1656693260-jrn3WaOP"
+                        }else{
+                          liff.closeWindow();
+                        }
+                      })
+                    }
+                  }
+                }else{
+                  $("#title").html("<br>親愛的客戶，本活動已結束。<br><br>若您有相關問題惠請洽詢客服中心0800-073-588/02-8178-3018或所屬營業員；<br><br>造成您的不便敬請見諒，謝謝！");
+                  //liff.closeWindow();
+                }
+                })
+
+            .catch((err) => {
+                document.getElementById("liffAppContent").classList.add('hidden');
+                document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            });
+    }
+
+    /**
+     * Initialize the app by calling functions handling individual app components
+     */
+    //function initializeApp() {
+        //registerButtonHandlers();
+      //  registerButtonHandlerss();
+        // check if the user is logged in/out, and disable inappropriate button
+    //}
+
+    /**
+     * Display data generated by invoking LIFF methods
+    /**
+     * Toggle the login/logout buttons based on the isInClient status, and display a message accordingly
+     */
+
+    /**
+     * Register event handlers for the buttons displayed in the app
+     */
+
+    
+  </script>
+
+  <div class="betternet-wrapper"></div>
+  <div id="liffAppContent">
+    <!-- LIFF INIT ERROR -->
+    <div id="liffInitErrorMessage" class="hidden">
+        <p>Something went wrong with LIFF initialization.</p>
+        <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error
+            occurs in the process of <code>liff.init()</code>.
+    </div>
+    <!-- NODE.JS LIFF ID ERROR -->
+    <div id="nodeLiffIdErrorMessage" class="hidden">
+        <p>Unable to receive the LIFF ID as an environment variable.</p>
+    </div>
+</body>
+
+</html>
