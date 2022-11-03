@@ -829,7 +829,7 @@
         "secsrc": "https://emarketing.fbs.com.tw/fbs_a/user_upload/20221024021350148d.png?51",
         "rightbuttonname":"開啟e點通基金平台",
         "linebuttonname":"開啟e點通基金平台",
-        "linetext":{"type":"bubble","footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"button","style":"link","height":"sm","action":{"type":"message","label":"測試呼叫主選單","text":"/主選單"}},{"type":"box","layout":"vertical","contents":[],"margin":"sm"},{"type":"button","style":"link","height":"sm","action":{"type":"uri","label":"呼叫開戶選單","uri":"https://liff.line.me/1656693260-k5QpxdWM?formid=1007"}},{"type":"button","action":{"type":"uri","label":"基金平台影片清單","uri":"https://liff.line.me/1656693260-k5QpxdWM?formid=test20102"}}],"flex":0 }}
+        "linetext":{"type":"bubble","footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"box","layout":"vertical","contents":[],"margin":"sm"},{"type":"button","style":"link","height":"sm","action":{"type":"uri","label":"呼叫開戶選單","uri":"https://liff.line.me/1656693260-k5QpxdWM?formid=1007"}},{"type":"button","action":{"type":"uri","label":"基金平台影片清單","uri":"https://liff.line.me/1656693260-k5QpxdWM?formid=test20102"}}],"flex":0 }}
     }
    
 
